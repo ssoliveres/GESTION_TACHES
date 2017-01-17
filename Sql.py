@@ -6,9 +6,8 @@ import sqlite3
 class Sql:
    def __init__(self):
       self._fichier = "./BDD/taches.sq3"
-      _set_connexion_sqlite3()
 
-   def _set_connexion_sqlite3():
+   def _set_connexion_sqlite3(self):
       self._connexion = sqlite3.connect(self._fichier)
 
    def SQL_Disconnect():
@@ -33,10 +32,8 @@ class Sql:
       self._cursor.execute("SELECT * FROM " + t)
       for taskList in self._cursor:
          print tasklist
-   
-cursor.execute("CREATE TABLE IF NOT EXIST taches (id INTEGER, nom TEXT, debut DATE, priorite INT)")
 
-cursor.execute("INSERT INTO taches(id, nom, debut, priorite) VALUES(1,'Premiere tache',20170112,1)")
-cursor.execute("INSERT INTO taches(id, nom, debut, priorite) VALUES(2,'Deuxieme tache',20170112,1)")
-
+connexion = Sql()
+connexion._set_connexion_sqlite3()
+ 
 connexion.commit()
